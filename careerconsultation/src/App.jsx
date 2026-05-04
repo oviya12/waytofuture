@@ -90,7 +90,7 @@ export default function App() {
         {/* 1. Logo & About Us */}
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 100, height: 100, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 60, height: 60, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <img
                 src="/waytofuture_logo.png"
                 alt="Way2Future logo"
