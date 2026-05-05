@@ -9,18 +9,18 @@
   --card-bg: rgba(255, 255, 255, 0.04);
   --nav-bg: rgba(10, 10, 15, 0.96);
   --border: rgba(255, 255, 255, 0.1);
-  --accent: #FF6B35;
+  --accent: #163A75;
 }
 
 [data-theme='light'] {
-  --bg-color: #F5F0E8;
+  --bg-color: #FFFFFF;
   --text-main: #0A0A0F;
   --text-muted: #4A4540;
   --text-dim: #7A746E;
   --card-bg: rgba(0, 0, 0, 0.04);
   --nav-bg: rgba(245, 240, 232, 0.96);
   --border: rgba(0, 0, 0, 0.1);
-  --accent: #E85A25;
+  --accent: #163A75;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0; transition: background-color 0.3s ease, color 0.3s ease;}
@@ -48,7 +48,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   background: rgba(0, 0, 0, 0.85);
   z-index: 1000;
   display: flex;
-  align-items: center; /* Centers modal vertically */
+  align-items: center;
   justify-content: center;
   padding: 20px;
   backdrop-filter: blur(4px);
@@ -61,11 +61,10 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   max-width: 900px;
   padding: 30px;
   position: relative;
-  max-height: 90vh; /* Prevents modal from going off-screen */
-  overflow-y: visible; /* Let the internal area handle the scroll */
+  max-height: 90vh;
+  overflow-y: visible;
 }
 
-/* Specific area for table scrolling */
 .modal-scroll-area::-webkit-scrollbar {
   width: 6px;
 }
@@ -103,14 +102,13 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   color: var(--text-main);
 }
 
-/* Mobile adjustments */
 @media (max-width: 640px) {
   .footer-grid {
     text-align: center;
     gap: 30px;
   }
 }
-/* Navigation Links */
+
 .nav-link {
   background: none;
   border: none;
@@ -128,7 +126,6 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   color: var(--accent);
 }
 
-/* Review Cards Animation */
 .review-card {
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -139,12 +136,168 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Navbar */
-@media (max-width: 860px) {
+.services-page {
+  padding: 260px 5vw 80px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--bg-color);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.service-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: none;
+  background: transparent;
+  padding: 24px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.service-summary {
+  display: none;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.service-chevron {
+  font-size: 1.6rem;
+  color: var(--accent);
+}
+
+.service-details {
+  display: block;
+  padding: 0 24px 24px;
+}
+
+@media (max-width: 1024px) {
+  .services-page {
+    padding-top: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-toggle {
+    padding: 18px 20px;
+  }
+
+  .service-summary {
+    display: block;
+  }
+
+  .service-details {
+    display: none;
+  }
+
+  .service-card.expanded .service-details {
+    display: block;
+  }
+}
+
+/* Show/hide hamburger on correct viewports */
+@media (min-width: 861px) {
   .desk-nav {
     display: none !important;
   }
 }
+
+.nav-main-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-search-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    height: auto !important;
+    padding: 12px 5vw !important;
+    flex-wrap: wrap;
+  }
+  .nav-main-wrapper > .nav-search-bar {
+    order: 3;
+    flex: 0 0 100%;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 12px 4vw !important;
+    top: 56px !important;
+  }
+  .navbar > .nav-main-wrapper {
+    width: 100% !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+  }
+  .nav-left {
+    order: 1 !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+  .nav-left .nav-links {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 10px;
+  }
+  .nav-search-bar {
+    order: 2 !important;
+    width: 100% !important;
+    margin-top: 10px;
+    justify-content: center !important;
+  }
+  .nav-actions {
+    order: 3 !important;
+    width: 100% !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+  }
+  .nav-actions .hide-on-scroll {
+    width: 100% !important;
+    justify-content: flex-end !important;
+  }
+  .icon-btn {
+    margin-left: auto;
+  }
+}
+
 .sub-title-accent {
   color: var(--accent);
   font-size: 0.75rem;
@@ -181,7 +334,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(26, 107, 255, 0.12);
   border: 1px solid var(--border);
   padding: 8px 16px;
   border-radius: 100px;
@@ -192,27 +345,41 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   letter-spacing: .1em;
   margin-bottom: 20px;
 }
-/* Make search input prominent */
+
 .navbar .fi {
-  background: var(--bg-color); /* Contrast against nav */
-  border: 1px solid var(--accent); /* Brand highlight */
-  border-radius: 50px; /* Modern pill shape */
+  background: var(--bg-color);
+  border: 1px solid var(--accent);
+  border-radius: 50px;
   padding: 12px 25px;
   font-size: 0.95rem;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
+  box-shadow: 0 4px 15px rgba(26, 107, 255, 0.1);
 }
 
 .navbar .fi:focus {
   background: var(--bg-color);
-  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 4px 20px rgba(26, 107, 255, 0.2);
 }
 
-/* Hide logo text on scroll to give search more room */
 .navbar.scrolled .logo-text {
   display: none;
 }
 
-/* Search Results Dropdown */
+.hide-on-scroll {
+  transition: opacity 0.25s ease, max-height 0.25s ease, flex 0.25s ease, margin 0.25s ease, padding 0.25s ease;
+}
+
+.navbar.scrolled .hide-on-scroll {
+  opacity: 0;
+  max-height: 0;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  flex: 0 0 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .search-results {
   position: absolute;
   top: 100%;
@@ -224,7 +391,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   margin-top: 8px;
   max-height: 300px;
   overflow-y: auto;
-  z-index: 9999; /* Ensures it sits above all elements on the page */
+  z-index: 9999;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -240,11 +407,10 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   color: var(--accent);
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
   .navbar {
     height: auto !important;
-    padding: 15px 5vw !important;
+    padding: 12px 5vw !important;
     flex-wrap: wrap;
   }
   .navbar > div:nth-child(2) {
@@ -253,7 +419,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
     margin-top: 15px;
   }
 }
-/* Quick Action Icon Buttons in Nav */
+
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -281,7 +447,6 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   border-color: #25D366;
 }
 
-/* Solid WhatsApp Button */
 .btn-whatsapp-solid {
   background: #25D366;
   color: #fff;
@@ -306,7 +471,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
     display: none !important;
   }
 }
-/* Nav Contact Buttons Styling */
+
 .nav-contact-btn {
   display: flex;
   align-items: center;
@@ -346,23 +511,15 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   transform: translateY(-2px);
 }
 
-/* Hide labels on small mobile to keep icons attentive */
 @media (max-width: 600px) {
   .nav-contact-btn .label {
     display: none;
   }
-  .nav-contact-btn {
-    padding: 10px;
-  }
-  .navbar {
-    height: auto !important;
-    padding: 15px 5vw !important;
-  }
 }
-/* FORCE SINGLE-ROW LAYOUT ON DESKTOP */
+
 .hero-forced-row {
   display: flex;
-  flex-direction: row; /* Force horizontal layout */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 50px;
@@ -371,15 +528,13 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   margin: 0 auto;
 }
 
-/* Control Text Fraction */
 .hero-text-block {
   flex: 0 1 auto;
-  max-width: 600px; /* Constrains text width for better single-file parsing */
+  max-width: 600px;
 }
 
-/* Control Carousel Fraction (Increase Fraction) */
 .carousel-forced-container {
-  flex: 0 0 550px; /* Increased Fixed width forces a larger image fraction */
+  flex: 0 0 550px;
   position: relative;
 }
 
@@ -391,13 +546,12 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 
-/* Carousel Dotted Navigation */
 .carousel-forced-dots {
   display: flex;
   justify-content: center;
   gap: 8px;
-  marginTop: 18px;
-  alignItems: center;
+  margin-top: 18px;
+  align-items: center;
 }
 
 .carousel-dot {
@@ -415,32 +569,9 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
 
 .dot-btn {
   padding: 4px 10px;
-  fontSize: 0.75rem;
+  font-size: 0.75rem;
 }
 
-/* Responsive Handling (Single Media Query for deployer stability) */
-@media (max-width: 1024px) {
-  .hero-section {
-    padding-top: 130px !important;
-  }
-  
-  .hero-forced-row {
-    flex-direction: column !important; /* Stack horizontally on mobile */
-    gap: 40px !important;
-  }
-  
-  .hero-text-block {
-    max-width: 100% !important;
-    text-align: center;
-  }
-  
-  .carousel-forced-container {
-    flex: 0 1 100% !important;
-    max-width: 450px !important;
-  }
-}
-
-/* Other Necessary Classes for your modular code */
 .sub-title-accent {
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -451,7 +582,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 60px;
 }
-/* Announcement Banner */
+
 .marquee-bar {
   background: var(--accent);
   color: #fff;
@@ -467,7 +598,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
   top: 0;
   left: 0;
   right: 0;
-  z-index: 150; /* Sits above the fixed navigation bar */
+  z-index: 150;
 }
 
 .marquee-text-wrapper {
@@ -485,11 +616,12 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
 }
 
 .marquee-bar:hover .marquee-text-wrapper {
-  animation-play-state: paused; /* Allows users to pause on hover to read or click */
+  animation-play-state: paused;
 }
+
 .responsive-hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1.8fr; /* Smaller text fraction, larger image fraction */
+  grid-template-columns: 1.2fr 1.8fr;
   gap: 30px;
   align-items: center;
   max-width: 1280px;
@@ -498,7 +630,7 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
 
 @media (max-width: 1024px) {
   .responsive-hero-grid {
-    grid-template-columns: 1fr; /* Stack vertically for mobile view */
+    grid-template-columns: 1fr;
     gap: 40px;
   }
   
@@ -510,9 +642,28 @@ body{background: var(--bg-color); color: var(--text-main); font-family: 'Playfai
     height: 300px !important;
   }
 }
+
 @media (max-width: 1024px) {
   .hero-section, 
   section:first-of-type {
-    padding-top: 220px !important; /* Ensures the search bar and context badge are fully visible */
+    padding-top: 240px !important;
+  }
+}
+/* Show/hide hamburger on correct viewports */
+@media (min-width: 861px) {
+  .desk-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-main-wrapper {
+    flex-wrap: wrap !important;
+  }
+  
+  .nav-search-bar {
+    order: 3 !important;
+    flex: 0 0 100% !important;
+    margin-top: 10px !important;
   }
 }
